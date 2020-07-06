@@ -8,6 +8,7 @@
 
 package com.aws.sample.springboot.domain.posts;
 
+import com.aws.sample.springboot.domain.BaseTimeEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @Entity // 테이블과 링크될 클래스, 언더스코어 네이밍(_) 으로 테이블 이름을 매칭함 salesManager -> sales_manager table
-public class Posts {
+public class Posts extends BaseTimeEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
@@ -48,5 +49,10 @@ public class Posts {
     this.title = title;
     this.content = content;
     this.author = author;
+  }
+
+  public void update(String title, String content) {
+    this.title = title;
+    this.content = content;
   }
 }

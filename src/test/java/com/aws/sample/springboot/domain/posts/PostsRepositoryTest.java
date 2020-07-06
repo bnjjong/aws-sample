@@ -1,5 +1,6 @@
 package com.aws.sample.springboot.domain.posts;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.After;
 import org.junit.Test;
@@ -46,6 +47,29 @@ public class PostsRepositoryTest {
     Posts posts = postsList.get(0);
     assertThat(posts.getTitle()).isEqualTo(title);
     assertThat(posts.getContent()).isEqualTo(content);
+  }
+
+  @Test
+  public void BaseTimeEntity_등록() {
+    LocalDateTime now = LocalDateTime.of(2020,07,06,20,0,0);
+    postsRepository.save(
+        Posts.builder()
+        .title("title")
+        .content("content")
+        .author("jshan")
+        .build()
+    );
+
+    // when
+    List<Posts> postsList = postsRepository.findAll();
+
+    //then
+    Posts posts = postsList.get(0);
+    System.out.println(">>>>>>>>>>>> createdDate = "+ posts.getCreatedDate());
+    System.out.println(">>>>>>>>>>>> modifiedDate = "+ posts.getModifiedDate());
+
+    assertThat(posts.getCreatedDate()).isAfter(now);
+    assertThat(posts.getModifiedDate()).isAfter(now);
   }
 
 }

@@ -10,6 +10,7 @@ package com.aws.sample.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
  * create on 2020/07/06.
@@ -21,6 +22,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @see
  * @since 지원하는 자바버전 (ex : 5+ 5이상)
  */
+@EnableJpaAuditing //JPA Auditing 활성화
 @SpringBootApplication
 public class Application {
 
