@@ -70,6 +70,8 @@ public class PostsRepositoryTest {
 
     assertThat(posts.getCreatedDate()).isAfter(now);
     assertThat(posts.getModifiedDate()).isAfter(now);
+
+    System.out.println("김은지 사랑해요!");
   }
 
 }
