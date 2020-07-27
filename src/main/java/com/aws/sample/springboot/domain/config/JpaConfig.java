@@ -3,17 +3,16 @@
  * This software is the proprietary of Enliple
  *
  * @author <a href="mailto:jshan@enliple.com">jshan</a>
- * @since 2020/07/06
+ * @since 2020/07/28
  */
 
-package com.aws.sample.springboot;
+package com.aws.sample.springboot.domain.config;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
- * create on 2020/07/06.
+ * create on 2020/07/28.
  * <p> 클래스 설명 </p>
  * <p> {@link } and {@link }관련 클래스 </p>
  *
@@ -22,12 +21,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  * @see
  * @since 지원하는 자바버전 (ex : 5+ 5이상)
  */
-//@EnableJpaAuditing //JPA Auditing 활성화
-@SpringBootApplication
-public class Application {
-
-  public static void main(String[] args) {
-    SpringApplication.run(Application.class, args);
-  }
+@Configuration
+@EnableJpaAuditing
+public class JpaConfig {
 
 }
