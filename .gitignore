@@ -4,5 +4,4 @@
 application-oauth.properties
 out/
 src/main/resources/templates/layout/header.mustache
-src/test/resources/
 /build/
