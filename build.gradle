@@ -1,13 +1,11 @@
-buildscript{
+buildscript {
     ext {
         springBootVersion = '2.1.9.RELEASE'
     }
-
     repositories {
         mavenCentral()
         jcenter()
     }
-
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
@@ -16,13 +14,17 @@ buildscript{
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'io.spring.dependency-management' // 스프링 부트의 의존성들을 관리해 주는 플러그인
+apply plugin: 'io.spring.dependency-management'// 스프링 부트의 의존성들을 관리해 주는 플러그인
+
+
+
 
 
 
 group 'org.example'
-version '1.0-SNAPSHOT'
+version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 sourceCompatibility = 1.8
+
 
 repositories {
     mavenCentral()
@@ -30,14 +32,8 @@ repositories {
 }
 
 dependencies {
-    def lombokVersion = '1.18.12'
-    // lombok
-    compileOnly "org.projectlombok:lombok:$lombokVersion"
-    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
-    testCompileOnly "org.projectlombok:lombok:$lombokVersion"
-    testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
-
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-mustache')
     compile('com.h2database:h2')
@@ -49,9 +45,6 @@ dependencies {
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("org.springframework.security:spring-security-test")
-
-//    annotationProcessor('org.projectlombok:lombok:1.18.6')
-//    compileOnly('org.projectlombok:lombok:1.18.6')
 }
 
 
