@@ -3,5 +3,4 @@
 /.idea/
 application-oauth.properties
 out/
-src/main/resources/templates/layout/header.mustache
 /build/
