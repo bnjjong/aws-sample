@@ -38,13 +38,12 @@ deploy: # s3로 파일 업로드 혹은 CodeDeploy 로 배포 등 외부 서비�
     wait-until-deployed: true
 
   - provider: codedeploy
-      access_key_id: $AWS_ACCESS_KEY # Travis repo settings
-      secret_access_key: $AWS_SECRET_KEY # Travis repo settings
-      bucket: aws-sample-build # s3 버킷
-      key: aws-sample.zip # 빌드 파일을 압축해서 전달
-      bundle_type: zip
-      application: aws-sample # 웹 콘솔에서 등록한 codeDeploy 애플리케이션
-      deployment_group: aws-sample-group # 웹 콘솔에서 등록한 CodeDeploy
-
-      region: ap-northeast-2
-      wait-until-deployed: true
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings
+    bucket: aws-sample-build # s3 버킷
+    key: aws-sample.zip # 빌드 파일을 압축해서 전달
+    bundle_type: zip
+    application: aws-sample # 웹 콘솔에서 등록한 codeDeploy 애플리케이션
+    deployment_group: aws-sample-group # 웹 콘솔에서 등록한 CodeDeploy
+    region: ap-northeast-2
+    wait-until-deployed: true
