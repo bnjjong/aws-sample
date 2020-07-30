@@ -20,3 +20,19 @@ notifications:
   email:
     recipients:
       - dogfootmaster@gmail.com
+
+before_deploy: # deploy 가 수행되기전에 실행 됨.
+  - zip -r aws-sample *
+  - mkdir -p deploy # Travis CI가 실행 중인 위치에서 생성
+  - mv aws-sample.zip deploy/aws-sample.zip
+
+deploy: # s3로 파일 업로드 혹은 CodeDeploy 로 배포 등 외부 서비스와 연동될 행위들을 선언
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # Travis repo settings
+    secret_access_key: $AWS_SECRET_KEY # Travis repo settings
+    bucket: aws-sample-build # s3 버킷
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # zip 파일 접근을 private 으로
+    local_dir: deploy # before_deploy 에서 생성한 디렉토리
+    wait-until-deployed: true
